@@ -6,6 +6,10 @@ sudo echo &>/dev/null
 rebuild=false
 reboot=false
 
+## Fetch conf files from github
+git clone "https://github.com/py-er/linux-dotfiles.git"
+cd linux-dotfiles/nixos-build
+
 ## alacritty folder
 alacrittyPath="~/.config/alacritty"
 if [ ! -d "$alacrittyPath" ]; then
