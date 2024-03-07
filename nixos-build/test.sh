@@ -10,6 +10,7 @@ user=$(whoami)
 ## Fetch conf files from github
 git clone "https://github.com/py-er/linux-dotfiles.git"
 cd linux-dotfiles/nixos-build
+pwd=$(pwd)
 
 ## alacritty folder
 alacrittyPath="/home/$user/.config/alacritty"
@@ -22,7 +23,7 @@ fi
     path1="$alacrittyPath/$file"
     path2="home/.config/alacritty/$file"
     if [ ! -e "$path1" ]; then touch "$path1"; fi
-    [ "$(diff "$path2" "$path1")" ] && (cp $path2 $path1; echo "$file has been updated!") || (echo "Skipping $file! allready latest build!")
+    [ "$(diff "$pwd/$path2" "$path1")" ] && (cp $path2 $path1; echo "$file has been updated!") || (echo "Skipping $file! allready latest build!")
 
 ### Finishing upp
 cd -
