@@ -2,8 +2,6 @@
 
 sudo echo &>/dev/null
 
-echo $user
-
 ## variable set
 rebuild=false
 reboot=false
@@ -22,7 +20,7 @@ fi
     # alacritty.yml
     file="alacritty.yml"
     path1="$alacrittyPath/$file"
-    path2="./home/.config/alacritty/$file"
+    path2="home/.config/alacritty/$file"
     if [ ! -e "$path1" ]; then touch "$path1"; fi
     [ "$(diff "$path2" "$path1")" ] && (cp $path2 $path1; echo "$file has been updated!") || (echo "Skipping $file! allready latest build!")
 
