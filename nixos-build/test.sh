@@ -17,7 +17,7 @@ fi
     path1="$alacrittyPath/$file"
     path2="./home/.config/alacritty/$file"
     if [ ! -e "$path1" ]; then; touch "$path1"; fi
-    if diff "$path2" "$path1" &> /dev/null; then; echo "Skipping $file! allready latest build!"; else; cp $path2 $path1; echo "$file has been updated!"; fi
+    [ "$(diff "$path2" "$path1")" ] && (cp $path2 $path1; echo "$file has been updated!") || (echo "Skipping $file! allready latest build!")
 
 ### Finishing upp
 cd -
