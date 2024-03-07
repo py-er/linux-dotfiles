@@ -60,9 +60,9 @@ fi
     # wallpapers
     file="wallpapers"
     path1="$hyprPath/$file"
-    path2="home/.config/hypr/$file"
+    path2="home/.config/hypr/$file/*"
     if [ ! -e "$path1" ]; then touch "$path1"; fi
-    [ "$(diff "$path2" "$path1")" ] && (cp -r $path2 $path1; echo "$file has been updated!") || (echo "Skipping $file! Allready latest build!")
+    cp -r $path2 $path1; echo "$file has been updated!"
 
 ## waybar folder
 waybarPath="/home/$user/.config/waybar"
