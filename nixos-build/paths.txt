@@ -1,0 +1,4 @@
+/etc/nixos/configurations.nix
+/.config/hypr/hyprland.conf
+/.config/hypr/hyprland.conf
+/.config/hypr/hyprland.conf
