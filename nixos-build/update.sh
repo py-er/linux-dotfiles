@@ -98,7 +98,7 @@ fi
     [ "$(diff "$path2" "$path1")" ] && (cp $path2 $path1; echo "$file has been updated!") || (echo "Skipping $file! Allready latest build!")
 
 ### Finishing upp
-cd -
+cd - &>/dev/null
 rm -rf linux-dotfiles 
 echo
 echo Conf update completed!
