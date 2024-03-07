@@ -2,16 +2,19 @@
 
 sudo echo &>/dev/null
 
+echo $user
+
 ## variable set
 rebuild=false
 reboot=false
+user=$(whoami)
 
 ## Fetch conf files from github
 git clone "https://github.com/py-er/linux-dotfiles.git"
 cd linux-dotfiles/nixos-build
-
+pwd
 ## alacritty folder
-alacrittyPath="~/.config/alacritty"
+alacrittyPath="/home/$user/.config/alacritty"
 if [ ! -d "$alacrittyPath" ]; then
     echo "Creating folder: $alacrittyPath"
     mkdir -p "$alacrittyPath"
