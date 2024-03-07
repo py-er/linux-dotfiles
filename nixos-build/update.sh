@@ -9,7 +9,7 @@ user=$(whoami)
 
 ## Fetch conf files from github
 git clone "https://github.com/py-er/linux-dotfiles.git"
-cd linux-dotfiles/nixos-build
+cd linux-dotfiles/nixos-build/config-files
 
 ### Nix config
 if [ ! -e "/etc/nixos/configuration.nix" ]; then
