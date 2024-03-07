@@ -19,7 +19,7 @@ fi
     file="configuration.nix"
     path1="/etc/nixos/$file"
     path2="./etc/nixos/$file"
-    if diff "$path2" "$path1" &> /dev/null; then; echo "Skipping $file! allready latest build!"; else; sudo cp $path2 $path1; echo "$file has been updated!"; rebuild=true; fi
+    [ "$(diff "$path2" "$path1")" ] && (sudo cp $path2 $path1; echo "$file has been updated!"; rebuild=true) || (echo "Skipping $file! Allready latest build!")
 
 ### Home config
 ## hypr folder
@@ -32,36 +32,36 @@ fi
     file="hyprland.conf"
     path1="$hyprPath/$file"
     path2="./home/.config/hypr/$file"
-    if [ ! -e "$path1" ]; then; touch "$path1"; fi
-    if diff "$path2" "$path1" &> /dev/null; then; echo "Skipping $file! allready latest build!"; else; cp $path2 $path1; echo "$file has been updated!"; fi
+    if [ ! -e "$path1" ]; then touch "$path1"; fi
+    [ "$(diff "$path2" "$path1")" ] && (cp $path2 $path1; echo "$file has been updated!") || (echo "Skipping $file! Allready latest build!")
 
     # hyprpaper.conf
     file="hyprpaper.conf"
     path1="$hyprPath/$file"
     path2="./home/.config/hypr/$file"
-    if [ ! -e "$path1" ]; then; touch "$path1"; fi
-    if diff "$path2" "$path1" &> /dev/null; then; echo "Skipping $file! allready latest build!"; else; cp $path2 $path1; echo "$file has been updated!"; reboot=true; fi
+    if [ ! -e "$path1" ]; then touch "$path1"; fi
+    [ "$(diff "$path2" "$path1")" ] && (cp $path2 $path1; echo "$file has been updated!"; reboot=true) || (echo "Skipping $file! Allready latest build!")
 
     # hypridle.conf
     file="hypridle.conf"
     path1="$hyprPath/$file"
     path2="./home/.config/hypr/$file"
-    if [ ! -e "$path1" ]; then; touch "$path1"; fi
-    if diff "$path2" "$path1" &> /dev/null; then; echo "Skipping $file! allready latest build!"; else; cp $path2 $path1; echo "$file has been updated!"; reboot=true; fi
+    if [ ! -e "$path1" ]; then touch "$path1"; fi
+    [ "$(diff "$path2" "$path1")" ] && (cp $path2 $path1; echo "$file has been updated!"; reboot=true) || (echo "Skipping $file! Allready latest build!")
 
     # hyprlock.conf
     file="hyprlock.conf"
     path1="$hyprPath/$file"
     path2="./home/.config/hypr/$file"
-    if [ ! -e "$path1" ]; then; touch "$path1"; fi
-    if diff "$path2" "$path1" &> /dev/null; then; echo "Skipping $file! allready latest build!"; else; cp $path2 $path1; echo "$file has been updated!"; reboot=true; fi
+    if [ ! -e "$path1" ]; then touch "$path1"; fi
+    [ "$(diff "$path2" "$path1")" ] && (cp $path2 $path1; echo "$file has been updated!"; reboot=true) || (echo "Skipping $file! Allready latest build!")
 
     # wallpapers
     file="wallpapers"
     path1="$hyprPath/$file"
     path2="./home/.config/hypr/$file"
-    if [ ! -e "$path1" ]; then; touch "$path1"; fi
-    if diff "$path2" "$path1" &> /dev/null; then; echo "Skipping $file! allready latest build!"; else; cp -r $path2 $path1; echo "$file has been updated!"; fi
+    if [ ! -e "$path1" ]; then touch "$path1"; fi
+    [ "$(diff "$path2" "$path1")" ] && (cp -r $path2 $path1; echo "$file has been updated!") || (echo "Skipping $file! Allready latest build!")
 
 ## waybar folder
 waybarPath="~/.config/waybar"
@@ -73,15 +73,15 @@ fi
     file="config"
     path1="$waybarPath/$file"
     path2="./home/.config/waybar/$file"
-    if [ ! -e "$path1" ]; then; touch "$path1"; fi
-    if diff "$path2" "$path1" &> /dev/null; then; echo "Skipping $file! allready latest build!"; else; cp $path2 $path1; echo "$file has been updated!"; reboot=true; fi
+    if [ ! -e "$path1" ]; then touch "$path1"; fi
+    [ "$(diff "$path2" "$path1")" ] && (cp $path2 $path1; echo "$file has been updated!"; reboot=true) || (echo "Skipping $file! Allready latest build!")
 
     # style.css
     file="style.css"
     path1="$waybarPath/$file"
     path2="./home/.config/waybar/$file"
-    if [ ! -e "$path1" ]; then; touch "$path1"; fi
-    if diff "$path2" "$path1" &> /dev/null; then; echo "Skipping $file! allready latest build!"; else; cp $path2 $path1; echo "$file has been updated!"; reboot=true; fi
+    if [ ! -e "$path1" ]; then touch "$path1"; fi
+    [ "$(diff "$path2" "$path1")" ] && (cp $path2 $path1; echo "$file has been updated!"; reboot=true) || (echo "Skipping $file! Allready latest build!")
 
 ## alacritty folder
 alacrittyPath="~/.config/alacritty"
@@ -94,7 +94,7 @@ fi
     path1="$alacrittyPath/$file"
     path2="./home/.config/alacritty/$file"
     if [ ! -e "$path1" ]; then; touch "$path1"; fi
-    if diff "$path2" "$path1" &> /dev/null; then; echo "Skipping $file! allready latest build!"; else; cp $path2 $path1; echo "$file has been updated!"; fi
+    [ "$(diff "$path2" "$path1")" ] && (cp $path2 $path1; echo "$file has been updated!") || (echo "Skipping $file! Allready latest build!")
 
 ### Finishing upp
 cd -
