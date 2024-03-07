@@ -20,12 +20,12 @@ fi
     file="alacritty.yml"
     path1="$alacrittyPath/$file"
     path2="./home/.config/alacritty/$file"
-    if [ ! -e "$path1" ]; then; touch "$path1"; fi
+    if [ ! -e "$path1" ]; then touch "$path1"; fi
     [ "$(diff "$path2" "$path1")" ] && (cp $path2 $path1; echo "$file has been updated!") || (echo "Skipping $file! allready latest build!")
 
 ### Finishing upp
 cd -
-rm -r linux-dotfiles 
+rm -rf linux-dotfiles 
 echo
 echo Conf update completed!
 $reboot && echo Reboot recommended! Run: sudo reboot now
