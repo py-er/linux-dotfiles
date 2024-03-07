@@ -10,7 +10,7 @@ user=$(whoami)
 ## Fetch conf files from github
 git clone "https://github.com/py-er/linux-dotfiles.git"
 cd linux-dotfiles/nixos-build
-pwd
+
 ## alacritty folder
 alacrittyPath="/home/$user/.config/alacritty"
 if [ ! -d "$alacrittyPath" ]; then
