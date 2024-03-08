@@ -87,15 +87,11 @@ in
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim
-    nano
-    wget
-    alacritty
-    dolphin
-    wofi
-    mullvad-browser
-    librewolf
+    ## System apps
+    pulseaudio
     brightnessctl
+    
+    ## Desktop environment
     hyprland
     hyprpaper
     unstable.hypridle
@@ -104,10 +100,24 @@ in
     xdg-desktop-portal-hyprland
     waybar
     sddm
-    pulseaudio
+    dolphin
+    wofi
+
+    ## Terminal tools
+    vim
+    nano
+    wget
     unzip
+
+    ## GUI tools
+    alacritty
+    mullvad-browser
+    librewolf
+
+    ## Dev tools
     vscode
     git
+    github-desktop
   ];
 
   fonts.packages = with pkgs; [
