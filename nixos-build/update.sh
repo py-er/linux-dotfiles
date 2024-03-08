@@ -16,18 +16,26 @@ copy_sudo() {
     file=$1
     path1=$2
     path2=$3
-    $4 && rebuild=true
-    $5 && reboot=true
-    [ "$(diff "$path2" "$path1")" ] && (sudo cp $path2 $path1; echo "$file has been updated!") || (echo "Skipping $file! Allready latest build!")
+    if [ "$(diff "$path2" "$path1")" ]; then
+        sudo cp $path2 $path1
+        echo "$file has been updated!"
+        rebuild = $4
+        reboot = $5
+    else
+        echo "Skipping $file! Allready latest build!"
 }
 
 copy_home() {
     file=$1
     path1=$2
     path2=$3
-    $4 && rebuild=true
-    $5 && reboot=true
-    [ "$(diff "$path2" "$path1")" ] && (cp $path2 $path1; echo "$file has been updated!") || (echo "Skipping $file! Allready latest build!")
+    if [ "$(diff "$path2" "$path1")" ]; then
+        cp $path2 $path1
+        echo "$file has been updated!"
+        rebuild = $4
+        reboot = $5
+    else
+        echo "Skipping $file! Allready latest build!"
 }
 
 ### Nix config
