@@ -1,4 +1,6 @@
+## Fix line endings so that the files work on linux
 * text eol=lf
 
+## Set image files to binary files
 *.png binary
 *.jpg binary
