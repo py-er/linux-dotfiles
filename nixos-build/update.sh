@@ -2,7 +2,6 @@
 
 sudo echo &>/dev/null
 
-
 ## variable set
 rebuild=false
 reboot=false
@@ -11,6 +10,25 @@ user=$(whoami)
 ## Fetch conf files from github
 git clone "https://github.com/py-er/linux-dotfiles.git"
 cd linux-dotfiles/nixos-build/config-files
+
+### Functions
+copy_sudo() {
+    file=$1
+    path1=$2
+    path2=$3
+    $4 && rebuild=true
+    $5 && reboot=true
+    [ "$(diff "$path2" "$path1")" ] && (sudo cp $path2 $path1; echo "$file has been updated!") || (echo "Skipping $file! Allready latest build!")
+}
+
+copy_home() {
+    file=$1
+    path1=$2
+    path2=$3
+    $4 && rebuild=true
+    $5 && reboot=true
+    [ "$(diff "$path2" "$path1")" ] && (cp $path2 $path1; echo "$file has been updated!") || (echo "Skipping $file! Allready latest build!")
+}
 
 ### Nix config
 if [ ! -e "/etc/nixos/configuration.nix" ]; then
@@ -21,7 +39,7 @@ fi
     file="configuration.nix"
     path1="/etc/nixos/$file"
     path2="etc/nixos/$file"
-    [ "$(diff "$path2" "$path1")" ] && (sudo cp $path2 $path1; echo "$file has been updated!"; rebuild=true) || (echo "Skipping $file! Allready latest build!")
+    copy_sudo $file $path1 $path2 true false
 
 ### Home config
 ## hypr folder
@@ -35,28 +53,28 @@ fi
     path1="$hyprPath/$file"
     path2="home/.config/hypr/$file"
     if [ ! -e "$path1" ]; then touch "$path1"; fi
-    [ "$(diff "$path2" "$path1")" ] && (cp $path2 $path1; echo "$file has been updated!") || (echo "Skipping $file! Allready latest build!")
+    copy_home $file $path1 $path2 false false 
 
     # hyprpaper.conf
     file="hyprpaper.conf"
     path1="$hyprPath/$file"
     path2="home/.config/hypr/$file"
     if [ ! -e "$path1" ]; then touch "$path1"; fi
-    [ "$(diff "$path2" "$path1")" ] && (cp $path2 $path1; echo "$file has been updated!"; reboot=true) || (echo "Skipping $file! Allready latest build!")
+    copy_home $file $path1 $path2 false true
 
     # hypridle.conf
     file="hypridle.conf"
     path1="$hyprPath/$file"
     path2="home/.config/hypr/$file"
     if [ ! -e "$path1" ]; then touch "$path1"; fi
-    [ "$(diff "$path2" "$path1")" ] && (cp $path2 $path1; echo "$file has been updated!"; reboot=true) || (echo "Skipping $file! Allready latest build!")
+    copy_home $file $path1 $path2 false true
 
     # hyprlock.conf
     file="hyprlock.conf"
     path1="$hyprPath/$file"
     path2="home/.config/hypr/$file"
     if [ ! -e "$path1" ]; then touch "$path1"; fi
-    [ "$(diff "$path2" "$path1")" ] && (cp $path2 $path1; echo "$file has been updated!"; reboot=true) || (echo "Skipping $file! Allready latest build!")
+    copy_home $file $path1 $path2 false true
 
     # wallpapers
     file="wallpapers"
@@ -76,14 +94,14 @@ fi
     path1="$waybarPath/$file"
     path2="home/.config/waybar/$file"
     if [ ! -e "$path1" ]; then touch "$path1"; fi
-    [ "$(diff "$path2" "$path1")" ] && (cp $path2 $path1; echo "$file has been updated!"; reboot=true) || (echo "Skipping $file! Allready latest build!")
+    copy_home $file $path1 $path2 false true
 
     # style.css
     file="style.css"
     path1="$waybarPath/$file"
     path2="home/.config/waybar/$file"
     if [ ! -e "$path1" ]; then touch "$path1"; fi
-    [ "$(diff "$path2" "$path1")" ] && (cp $path2 $path1; echo "$file has been updated!"; reboot=true) || (echo "Skipping $file! Allready latest build!")
+    copy_home $file $path1 $path2 false true
 
 ## alacritty folder
 alacrittyPath="/home/$user/.config/alacritty"
@@ -96,7 +114,7 @@ fi
     path1="$alacrittyPath/$file"
     path2="home/.config/alacritty/$file"
     if [ ! -e "$path1" ]; then touch "$path1"; fi
-    [ "$(diff "$path2" "$path1")" ] && (cp $path2 $path1; echo "$file has been updated!") || (echo "Skipping $file! Allready latest build!")
+    copy_home $file $path1 $path2 false false
 
 ### Finishing upp
 cd - &>/dev/null
