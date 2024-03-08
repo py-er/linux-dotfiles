@@ -19,8 +19,8 @@ copy_sudo() {
     if [ "$(diff "$path2" "$path1")" ]; then
         sudo cp $path2 $path1
         echo "$file has been updated!"
-        rebuild = $4
-        reboot = $5
+        rebuild=$4
+        reboot=$5
     else
         echo "Skipping $file! Allready latest build!"
     fi
@@ -33,8 +33,8 @@ copy_home() {
     if [ "$(diff "$path2" "$path1")" ]; then
         cp $path2 $path1
         echo "$file has been updated!"
-        rebuild = $4
-        reboot = $5
+        rebuild=$4
+        reboot=$5
     else
         echo "Skipping $file! Allready latest build!"
     fi
