@@ -26,15 +26,6 @@
              "default": ""
          }
      },
-    "keyboard-state": {
-        "numlock": false,
-        "capslock": false,
-        "format": "{name} {icon}",
-        "format-icons": {
-            "locked": "",
-            "unlocked": ""
-        }
-    },
     "hyprland/window": {
         "max-length": 40,
         "separate-outputs": true
