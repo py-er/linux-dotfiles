@@ -23,6 +23,7 @@ copy_sudo() {
         reboot = $5
     else
         echo "Skipping $file! Allready latest build!"
+    fi
 }
 
 copy_home() {
@@ -36,6 +37,7 @@ copy_home() {
         reboot = $5
     else
         echo "Skipping $file! Allready latest build!"
+    fi
 }
 
 ### Nix config
