@@ -107,7 +107,7 @@ in
     unzip
 
     ## GUI tools
-    firfox
+    firefox
     mullvad-browser
     cura
 
