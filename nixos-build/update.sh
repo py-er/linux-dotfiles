@@ -126,6 +126,19 @@ fi
     if [ ! -e "$path1" ]; then touch "$path1"; fi
     copy_home $file $path1 $path2 false false
 
+## rofi folder
+rofiPath="/home/$user/.config/rofi"
+if [ ! -d "$rofiPath" ]; then
+    echo "Creating folder: $rofiPath"
+    mkdir -p "$rofiPath"
+fi
+    # config.rasi
+    file="config.rasi"
+    path1="$rofiPath/$file"
+    path2="home/.config/rofi/$file"
+    if [ ! -e "$path1" ]; then touch "$path1"; fi
+    copy_home $file $path1 $path2 false false
+
 ### Finishing upp
 cd - &>/dev/null
 rm -rf linux-dotfiles 
