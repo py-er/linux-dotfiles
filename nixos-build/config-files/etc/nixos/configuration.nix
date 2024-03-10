@@ -99,7 +99,6 @@ in
     xwayland
     xdg-desktop-portal-hyprland
     waybar
-    cinnamon.nemo-with-extensions
     rofi-wayland
 
     ## Terminal tools
