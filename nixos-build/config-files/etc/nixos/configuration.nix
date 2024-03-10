@@ -60,8 +60,8 @@ in
     xkbVariant = "";
     enable = true;
     displayManager.sddm = {
-	enable = true;
-	autoNumlock = true;
+      enable = true;
+      autoNumlock = true;
     };
   };
 
@@ -99,22 +99,22 @@ in
     xwayland
     xdg-desktop-portal-hyprland
     waybar
-    sddm
-    dolphin
-    wofi
+    cinnamon.nemo-with-extensions
+    rofi-wayland
 
     ## Terminal tools
-    vim
-    nano
     wget
     unzip
 
     ## GUI tools
-    alacritty
+    firfox
     mullvad-browser
-    librewolf
+    cura
 
     ## Dev tools
+    vim
+    nano
+    alacritty
     vscode
     git
     github-desktop
