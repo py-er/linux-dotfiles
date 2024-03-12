@@ -106,6 +106,7 @@ in
     unzip
 
     ## GUI tools
+    webcord
     firefox
     mullvad-browser
     cura
