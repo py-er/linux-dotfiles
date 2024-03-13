@@ -27,7 +27,7 @@ in
   # Enable networking
   networking.networkmanager.enable = true;
 
-  #Sound
+  # Sound
   security.rtkit.enable = true;
   services.pipewire = {
 	enable = true;
@@ -65,10 +65,14 @@ in
     };
   };
 
+  # Enable Hyprland
   programs.hyprland = {
 	enable = true;
         xwayland.enable = true;
   };
+  # Hint electron apps to use wayland:
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
 
   # Configure console keymap
   console.keyMap = "sv-latin1";
@@ -100,6 +104,7 @@ in
     xdg-desktop-portal-hyprland
     waybar
     rofi-wayland
+    simp1e-cursors
 
     ## Terminal tools
     wget
@@ -122,7 +127,6 @@ in
 
   fonts.packages = with pkgs; [
     nerdfonts
-    font-awesome
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
