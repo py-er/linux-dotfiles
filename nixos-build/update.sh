@@ -123,7 +123,7 @@ fi
     # icons
     path1=$iconsPath
     path2="home/.icons/*"
-    cp -r $path2 $path1; echo "icons has been updated!
+    cp -r $path2 $path1; echo "icons has been updated!"
 
 ## alacritty folder
 alacrittyPath="/home/$user/.config/alacritty"
