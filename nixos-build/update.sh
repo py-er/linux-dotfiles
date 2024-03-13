@@ -84,7 +84,7 @@ fi
     path1="$hyprPath/$file"
     path2="home/.config/hypr/$file"
     if [ ! -e "$path1" ]; then touch "$path1"; fi
-    copy_home $file $path1 $path2 false true
+    copy_home $file $path1 $path2 false false
 
     # wallpapers
     file="wallpapers"
