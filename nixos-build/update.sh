@@ -90,7 +90,7 @@ fi
     file="wallpapers"
     path1="$hyprPath/$file"
     path2="home/.config/hypr/$file/*"
-    if [ ! -e "$path1" ]; then touch "$path1"; fi
+    if [ ! -d "$path1" ]; then mkdir "$path1"; fi
     cp -r $path2 $path1; echo "$file has been updated!"
 
 ## waybar folder
@@ -112,6 +112,18 @@ fi
     path2="home/.config/waybar/$file"
     if [ ! -e "$path1" ]; then touch "$path1"; fi
     copy_home $file $path1 $path2 false true
+
+
+## .icons folder
+iconsPath="/home/$user/.icons"
+if [ ! -d "$iconsPath" ]; then
+    echo "Creating folder: $iconsPath"
+    mkdir -p "$iconsPath"
+fi
+    # icons
+    path1=$iconsPath
+    path2="home/.icons/*"
+    cp -r $path2 $path1; echo "icons has been updated!
 
 ## alacritty folder
 alacrittyPath="/home/$user/.config/alacritty"
