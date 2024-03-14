@@ -80,6 +80,11 @@ in
   # Hint electron apps to use wayland:
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
+  programs.bash.shellAliases = {
+    display = "loupe";
+    fetchConfs = "wget -qO- https://raw.githubusercontent.com/py-er/linux-dotfiles/main/nixos-build/update.sh | bash";
+  };
+
 
   # Configure console keymap
   console.keyMap = "sv-latin1";
