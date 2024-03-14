@@ -93,6 +93,13 @@ fi
     if [ ! -d "$path1" ]; then mkdir "$path1"; fi
     cp -r $path2 $path1; echo "$file has been updated!"
 
+    # source
+    file="source"
+    path1="$hyprPath/$file"
+    path2="home/.config/hypr/$file"
+    if [ ! -e "$path1" ]; then touch "$path1"; fi
+    copy_home $file $path1 $path2 false true
+
 ## waybar folder
 waybarPath="/home/$user/.config/waybar"
 if [ ! -d "$waybarPath" ]; then
