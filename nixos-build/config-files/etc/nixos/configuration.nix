@@ -107,14 +107,20 @@ in
     simp1e-cursors
 
     ## Terminal tools
+    vim
     wget
+    curl
+    netcat
     unzip
+    openvpn
+    samba
 
     ## GUI tools
     webcord
     firefox
     mullvad-browser
     cura
+    loupe
 
     ## Dev tools
     vim
@@ -123,6 +129,21 @@ in
     vscode
     git
     github-desktop
+    docker
+    docker-compose
+
+    ## Hacking tools
+    nmap
+    burpsuite
+    ffuf
+    metasploit
+    sqlmap
+    wireshark
+    tcpdump
+    john
+    hashcat
+    enum4linux-ng
+    aircrack-ng
   ];
 
   fonts.packages = with pkgs; [
