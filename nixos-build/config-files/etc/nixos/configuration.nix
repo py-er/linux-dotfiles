@@ -108,7 +108,7 @@ in
     brightnessctl
     
     ## Desktop environment
-    hyprland
+    unstable.hyprland
     hyprpaper
     unstable.hypridle
     unstable.hyprlock
