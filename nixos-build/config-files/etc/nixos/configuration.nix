@@ -75,12 +75,23 @@ in
 	enable = true;
         xwayland.enable = true;
   };
-  # Hint electron apps to use wayland:
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   programs.bash.shellAliases = {
     display = "loupe";
     fetchConfs = "wget -qO- https://raw.githubusercontent.com/py-er/linux-dotfiles/main/nixos-build/update.sh | bash";
+  };
+
+  # Throttle CPU
+  services.auto-cpufreq.enable = true;
+  services.auto-cpufreq.settings = {
+    battery = {
+       governor = "powersave";
+       turbo = "never";
+      };
+    charger = {
+       governor = "performance";
+       turbo = "auto";
+    };
   };
 
 
@@ -104,17 +115,18 @@ in
     ## System apps
     pulseaudio
     brightnessctl
+    auto-cpufreq
     
     ## Desktop environment
     unstable.hyprland
     hyprpaper
     unstable.hypridle
     unstable.hyprlock
+    unstable.hyprcursor
     xwayland
     xdg-desktop-portal-hyprland
     waybar
     rofi-wayland
-    simp1e-cursors
 
     ## Terminal tools
     vim
