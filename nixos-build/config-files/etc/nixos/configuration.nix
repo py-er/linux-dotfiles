@@ -70,12 +70,16 @@ in
     };
   };
 
+  # Enable Gnome-keyring for storing secrets (github)
+  services.gnome.gnome-keyring.enable = true;
+
   # Enable Hyprland
   programs.hyprland = {
 	enable = true;
         xwayland.enable = true;
   };
 
+  # Set aliases
   programs.bash.shellAliases = {
     display = "loupe";
     fetchConfs = "wget -qO- https://raw.githubusercontent.com/py-er/linux-dotfiles/main/nixos-build/update.sh | bash";
@@ -116,6 +120,7 @@ in
     pulseaudio
     brightnessctl
     auto-cpufreq
+    gnome.gnome-keyring
     
     ## Desktop environment
     unstable.hyprland
