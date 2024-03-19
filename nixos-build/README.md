@@ -10,3 +10,9 @@ wget -qO- https://raw.githubusercontent.com/py-er/linux-dotfiles/main/nixos-buil
  ```bash
 wget -qO- https://raw.githubusercontent.com/py-er/linux-dotfiles/main/nixos-build/test.sh | bash
  ```
+
+
+install unstable branch:
+```bash
+nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable && sudo nix-channel --update
+ ```
